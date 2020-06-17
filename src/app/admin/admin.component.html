@@ -1,4 +1,4 @@
-<!-- <h4>Sites:</h4>
+<h4>Send message to:</h4>
 <mat-form-field>
   <mat-label>Select a Site</mat-label>
   <mat-select [(ngModel)]="selectedSiteEvent">
@@ -8,7 +8,9 @@
   </mat-select>
 </mat-form-field>
 <div>
-  <button class="btn btn-primary" (click)="subscribe()">Subscribe</button>
-</div> -->
+  <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+</div>
 
-<router-outlet></router-outlet>
+<div style="margin-top: 20px; color: blue;">
+  {{ messageFromApi }}
+</div>

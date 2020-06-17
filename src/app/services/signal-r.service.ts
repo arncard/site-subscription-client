@@ -32,12 +32,22 @@ export class SignalRService {
 
   // subscribe to the transfercalendardata event and accept the 
   // data from the server with the data parameter
-  public addSiteDataListener = () => {
+  public addSiteDataListener = (selectedSiteEvent: string) => {
     // connection.on runs when server-side code calls it using the Send method
-    this.hubConnection.on('transfersitemessage', (message) => {
-      //this.receivedMessage = message;
+    this.hubConnection.on(selectedSiteEvent, (message) => {
+      this.receivedMessage = message;
       //this.data = data;
       console.log("Transferred message");
+      console.log(message);
+    })
+  }
+
+  public removeSiteDataListener = (selectedSiteEvent: string) => {
+    // connection.on runs when server-side code calls it using the Send method
+    this.hubConnection.off(selectedSiteEvent, (message) => {
+      this.receivedMessage = message;
+      //this.data = data;
+      console.log("Unsubscribed message");
       console.log(message);
     })
   }
